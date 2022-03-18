@@ -1,0 +1,31 @@
+.mat-card { 
+    background-color: #2a3439; 
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .mat-card-content {
+      padding-left: 0;
+      margin-left: 0;
+      text-align: left;
+      color: #fff;
+  }
+
+  .mat-card-actions {
+    color: #000;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    text-align: center;
+    
+  }
+
+  .mat-flat-button {
+    color: #000;
+    margin-top: 0.2rem;
+    margin-bottom: 1rem;
+    // margin-left: 0.2rem;
+    // margin-right: 0.2rem;
+    
+  }

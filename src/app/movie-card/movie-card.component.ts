@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DirectorCardComponent } from '../director-card/director-card.component';
 import { GenreCardComponent } from '../genre-card/genre-card.component';
 
+
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
