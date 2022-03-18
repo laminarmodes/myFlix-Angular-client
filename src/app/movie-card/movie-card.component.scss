@@ -18,7 +18,6 @@
     align-content: center;
     justify-items: center;
     text-align: center;
-    
   }
 
   .mat-flat-button {
@@ -28,4 +27,22 @@
     // margin-left: 0.2rem;
     // margin-right: 0.2rem;
     
+  }
+
+  .mat-button {
+    color: rgba($color: #fff, $alpha: 0.3);
+    // justify-content: left;
+    // justify-items: left;
+    // align-items: left;
+    // align-content: left;
+  }
+
+  .mat-card-header {
+    
+    padding-left: 0;
+}
+
+  .mat-card-title {
+      margin-left: 0;
+      padding-left: 0;
   }

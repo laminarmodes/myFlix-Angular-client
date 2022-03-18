@@ -1,47 +1,29 @@
 <!-- *ngFor directive is being used to display all retunred movies, where each movie is displayed in its own card -->
 <div style="display: flex;">
     <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto;">
+
         <img src={{movie.ImagePath}} />
-        <mat-card-header>
-            <mat-card-title>
-                {{movie.Title}}
-            </mat-card-title>
-            <mat-card-subtitle>
-                {{movie.Director.Name}}
-            </mat-card-subtitle>
-        </mat-card-header>
 
-        <!-- [ngStyle]="{'align-content': 'center', 'align-items': 'center', 'justify-content': 'center', 'justify-items': 'center'}" -->
-        <mat-card-actions>
-            <div>
+        <div [ngStyle]="{'color': '#fff'}">
+            {{movie.Title}}
+        </div>
 
-                <div className="bottomButtons">
-                    <button mat-flat-button [ngStyle]="{'background-color': '#ff9f2d', 'width': '100%'}"
-                        (click)="showDetails(movie.Title, movie.Director.Name, movie.ImagePath, movie.Description)"
-                        color="primary">
-                        Details
-                    </button>
-                </div>
+        <button mat-button [ngStyle]="{'color': '#42a5f5', 'margin-left': '0', 'padding-left': '0'}"
+            (click)="showDirector(movie.Director.Name, movie.Director.Bio, movie.Director.Birth)" color="primary">
+            {{movie.Director.Name}}
+        </button>
+        <div>
+            <button mat-flat-button [ngStyle]="{'background-color': '#9575cd', 'width': '100%'}"
+                (click)="showDetails(movie.Title, movie.Director.Name, movie.ImagePath, movie.Description)"
+                color="primary">
+                Details
+            </button>
+        </div>
 
-                <div>
-                    <span>
-                        <button mat-flat-button [ngStyle]="{'background-color': 'purple', 'margin-right': '0.5rem'}"
-                            (click)="showDirector(movie.Director.Name, movie.Director.Bio, movie.Director.Birth)"
-                            color="primary">
-                            Director
-                        </button>
-                    </span>
-                    <span>
-                        <button mat-flat-button [ngStyle]="{'background-color': '#168fff',  'margin-left': '0.5rem'}"
-                            (click)="showGenre(movie.Genre.Name, movie.Genre.Description)" color="primary">
-                            Genre
-                        </button>
-                    </span>
+        <button mat-button [ngStyle]="{'color': '#fff176', 'margin-left': '0', 'padding-left': '0'}"
+            (click)="showGenre(movie.Genre.Name, movie.Genre.Description)" color="primary">
+            {{movie.Genre.Name}}
+        </button>
 
-                </div>
-
-
-            </div>
-        </mat-card-actions>
     </mat-card>
 </div>
