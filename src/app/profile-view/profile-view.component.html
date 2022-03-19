@@ -1,5 +1,27 @@
 <app-navbar></app-navbar>
-<div style="display: flex;" [ngStyle]="{'margin-top': '60px'}">
+<h1 [ngStyle]="{'color': '#fff', 'opacity': '0.8'}">
+    Profile
+</h1>
+
+<mat-card>
+    <mat-card-title [ngStyle]="{'color': '#fff', 'opacity': '0.8'}">
+        {{currentUser.Username}}
+    </mat-card-title>
+    <mat-card-subtitle [ngStyle]="{'color': '#fff', 'opacity': '0.8'}">
+        {{currentUser.Email}}
+    </mat-card-subtitle>
+    <mat-card-content>
+        <div>
+            {{currentUser.Birthday}}
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<h2 [ngStyle]="{'color': '#fff', 'opacity': '0.8', 'margin-bottom': '0.5rem'}">
+    Favorite Movies
+</h2>
+
+<div style="display: flex;" [ngStyle]="{'margin-top': '0.5rem'}">
     <mat-card *ngFor="let favoriteMoviesObject of favoriteMoviesObjects;" style="flex: 1 1 auto;">
 
         <mat-card-content>
@@ -40,4 +62,11 @@
         </mat-card-actions>
 
     </mat-card>
+</div>
+
+<div>
+    <button mat-flat-button [ngStyle]="{ 'margin-top': '2rem', 'margin-left': '2rem'}" (click)="deleteUser()"
+        color="accent">
+        Delete Account
+    </button>
 </div>

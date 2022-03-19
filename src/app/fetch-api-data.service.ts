@@ -194,7 +194,7 @@ export class FetchApiDataService {
   // Edit user
   editUser(userData: object): Observable<any> {
     const token = localStorage.getItem('token');
-    const userName = localStorage.getItem('user');
+    const userName = localStorage.getItem('username');
     return this.http.put(apiUrl + `users/${userName}`, userData, {
       headers: new HttpHeaders(
         {
@@ -210,7 +210,7 @@ export class FetchApiDataService {
   // Delete user
   public deleteUser(): Observable<any> {
     const token = localStorage.getItem('token');
-    const userName = localStorage.getItem('user');
+    const userName = localStorage.getItem('username');
     return this.http.delete(apiUrl + `users/${userName}`, {
       headers: new HttpHeaders(
         {

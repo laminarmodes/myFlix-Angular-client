@@ -131,4 +131,13 @@ export class ProfileViewComponent implements OnInit {
     });
   }
 
+  deleteUser(): void {
+    this.fetchApiData.deleteUser().subscribe(() => {
+      this.snackBar.open('Your account has been removed', 'Ok', {
+        duration: 4000,
+      });
+      localStorage.clear();
+    });
+  }
+
 }
