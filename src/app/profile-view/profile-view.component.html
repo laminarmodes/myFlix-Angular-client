@@ -1,24 +1,11 @@
 <app-navbar></app-navbar>
-<h1 [ngStyle]="{'color': '#fff', 'opacity': '0.8'}">
-    Profile
+
+<h1 [ngStyle]="{'color': '#fff', 'opacity': '0.8', 'margin-bottom': '0.5rem'}">
+    Hi {{currentUser.Username}}!
 </h1>
 
-<mat-card>
-    <mat-card-title [ngStyle]="{'color': '#fff', 'opacity': '0.8'}">
-        {{currentUser.Username}}
-    </mat-card-title>
-    <mat-card-subtitle [ngStyle]="{'color': '#fff', 'opacity': '0.8'}">
-        {{currentUser.Email}}
-    </mat-card-subtitle>
-    <mat-card-content>
-        <div>
-            {{currentUser.Birthday}}
-        </div>
-    </mat-card-content>
-</mat-card>
-
 <h2 [ngStyle]="{'color': '#fff', 'opacity': '0.8', 'margin-bottom': '0.5rem'}">
-    Favorite Movies
+    Your favorite movies...
 </h2>
 
 <div style="display: flex;" [ngStyle]="{'margin-top': '0.5rem'}">
@@ -64,9 +51,32 @@
     </mat-card>
 </div>
 
-<div>
-    <button mat-flat-button [ngStyle]="{ 'margin-top': '2rem', 'margin-left': '2rem'}" (click)="deleteUser()"
-        color="accent">
-        Delete Account
-    </button>
-</div>
+<h2 [ngStyle]="{'color': '#fff', 'opacity': '0.8'}">
+    Your Profile Information
+</h2>
+
+<mat-card [ngStyle]="{'margin-left': '2rem'}">
+    <mat-card-title [ngStyle]="{'color': '#fff', 'opacity': '0.8'}">
+        {{currentUser.Username}}
+    </mat-card-title>
+    <mat-card-subtitle [ngStyle]="{'color': '#fff', 'opacity': '0.8'}">
+        {{currentUser.Email}}
+    </mat-card-subtitle>
+    <mat-card-content>
+        <div>
+            {{currentUser.Birthday}}
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-flat-button [ngStyle]="{'background-color': '#fff176', 'width': '100%'}" (click)="showEditDialog()"
+            color="primary">
+            Edit Profile
+        </button>
+        <div>
+            <button mat-flat-button [ngStyle]="{ 'background-color': '#F48FB1', 'width': '100%'}" (click)="deleteUser()"
+                color="accent">
+                Delete Account
+            </button>
+        </div>
+    </mat-card-actions>
+</mat-card>

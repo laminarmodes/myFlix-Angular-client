@@ -30,6 +30,7 @@ import { GenreCardComponent } from './genre-card/genre-card.component';
 import { DetailsCardComponent } from './details-card/details-card.component';
 import { ProfileViewComponent } from './profile-view/profile-view.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 // This file is the entry point of the Angular app
 // It is mostly used to wire up different modules together and express dependencies
@@ -56,6 +57,7 @@ const appRoutes: Routes = [
     GenreCardComponent,
     ProfileViewComponent,
     NavbarComponent,
+    EditProfileComponent,
   ],
   imports: [
     BrowserModule,

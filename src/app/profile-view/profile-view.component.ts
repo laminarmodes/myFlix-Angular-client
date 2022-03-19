@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { DirectorCardComponent } from '../director-card/director-card.component';
 import { GenreCardComponent } from '../genre-card/genre-card.component';
+import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 
 @Component({
   selector: 'app-profile-view',
@@ -137,6 +138,13 @@ export class ProfileViewComponent implements OnInit {
         duration: 4000,
       });
       localStorage.clear();
+    });
+  }
+
+  showEditDialog(): void {
+    this.dialog.open(EditProfileComponent, {
+      // Assigning the dialog a width
+      width: '280px'
     });
   }
 
