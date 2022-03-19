@@ -31,11 +31,13 @@
                 {{movie.Genre.Name}}
             </button>
 
-            <mat-icon [ngStyle]="{'color': '#fff176'}" (click)="toggleFavorite(movie._id)">
+            <mat-icon *ngIf="isFavorite(movie._id)" [ngStyle]="{'color': '#fff176'}"
+                (click)="toggleFavorite(movie._id)">
                 favorite
             </mat-icon>
 
-            <mat-icon [ngStyle]="{'color': '#fff176'}" (click)="toggleFavorite(movie._id)">
+            <mat-icon *ngIf="!isFavorite(movie._id)" [ngStyle]="{'color': '#fff176'}"
+                (click)="toggleFavorite(movie._id)">
                 favorite_border
             </mat-icon>
         </mat-card-actions>

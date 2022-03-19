@@ -98,15 +98,22 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  toggleFavorite(movieID: string): void {
+  isFavorite(movieID: string): Boolean {
     // Check if movie is in favorites
     let favoriteMatch = this.favoriteMovies.filter(function (e: any) {
       return e === movieID;
     })
     let favoriteExists = favoriteMatch.length;
 
-    // If the movies is in favorites
     if (favoriteExists > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  toggleFavorite(movieID: string): void {
+    if (this.isFavorite(movieID)) {
       // Remove from favorites
       this.removeFromFavorites(movieID);
     } else {
@@ -116,57 +123,31 @@ export class MovieCardComponent implements OnInit {
   }
 
   addToFavorites(movieID: string): void {
-    console.log('Checking movie ID')
-    console.log(movieID);
-    console.log('Against these favorites...')
-    console.log(this.favoriteMovies);
     // Check if movie is in favorites
     let favoriteMatch = this.favoriteMovies.filter(function (e: any) {
-      console.log("checking index...")
-      console.log(e);
-      console.log(movieID);
-      // e._id is undefined
       return e === movieID;
     })
     let favoriteExists = favoriteMatch.length;
-    console.log('Checking for match...')
-    console.log(favoriteExists)
 
-    // If the favorite already exists
-    if (favoriteExists > 0) {
-      // Notify user
-      this.snackBar.open('Should not reach this point', 'OK', {
+    this.fetchApiData.addFavorite(movieID).subscribe((resp: any) => {
+      // Notify user of success
+      this.snackBar.open('Added to favorites', 'OK', {
         duration: 2000
       });
-    } else {
-      this.fetchApiData.addFavorite(movieID).subscribe((resp: any) => {
-        console.log('adding favorite');
-        console.log(resp);
-
-        // Notify user of success
-        this.snackBar.open('Added to favorites', 'OK', {
-          duration: 2000
-        });
-
-      });
-      // Update user data in client
-      this.ngOnInit();
-    }
-    //return this.getFavorites();
+    });
+    // Update user data in client
+    this.ngOnInit();
   }
 
   removeFromFavorites(movieID: string): void {
     this.fetchApiData.deleteFromFavorites(movieID).subscribe((resp: any) => {
-
       // Notify user of success
       this.snackBar.open('Removed from favorites', 'OK', {
         duration: 2000
       });
-
     });
     // Update user data in client
     this.ngOnInit();
-    //return this.getFavorites();
   }
 
 }
