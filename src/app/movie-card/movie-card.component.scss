@@ -13,34 +13,28 @@
 
   .mat-card-actions {
     color: #000;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-    justify-items: center;
-    text-align: center;
+    align-items:flex-end;
+    justify-content: left;
+    align-content: space-between;
+    justify-items: left;
+    text-align: left;
+    margin-left: 0px;
+    margin-right: 0px;
   }
 
   .mat-flat-button {
     color: #000;
     margin-top: 0.2rem;
     margin-bottom: 1rem;
-    // margin-left: 0.2rem;
-    // margin-right: 0.2rem;
-    
   }
 
   .mat-button {
     color: rgba($color: #fff, $alpha: 0.3);
-    // justify-content: left;
-    // justify-items: left;
-    // align-items: left;
-    // align-content: left;
   }
 
   .mat-card-header {
-    
     padding-left: 0;
-}
+  }
 
   .mat-card-title {
       margin-left: 0;

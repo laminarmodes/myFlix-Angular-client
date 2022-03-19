@@ -3,17 +3,17 @@
         <img src={{data.ImagePath}} style="height: 250px;">
     </mat-card-content>
 
-    <mat-card-title>
+    <mat-card-title [ngStyle]="{'color': '#fff', 'opacity': '0.8'}">
         {{ data.Title }}
     </mat-card-title>
-    <mat-card-subtitle>
+    <mat-card-subtitle [ngStyle]="{'color': '#fff', 'opacity': '0.8'}">
         {{ data.Director }}
     </mat-card-subtitle>
-    <mat-card-content>
+    <mat-card-content [ngStyle]="{'color': '#fff', 'opacity': '0.8'}">
         {{ data.Description }}
     </mat-card-content>
     <mat-card-actions>
-        <button mat-stroked-button aria-label="Close movie details button" mat-dialog-close color="primary">
+        <button mat-stroked-button aria-label="Close movie details button" mat-dialog-close color="accent">
             Close
         </button>
     </mat-card-actions>

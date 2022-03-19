@@ -1,29 +1,44 @@
 <!-- *ngFor directive is being used to display all retunred movies, where each movie is displayed in its own card -->
-<div style="display: flex;">
+<div style="display: flex;" [ngStyle]="{'margin-top': '60px'}">
     <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto;">
 
-        <img src={{movie.ImagePath}} />
+        <mat-card-content>
 
-        <div [ngStyle]="{'color': '#fff'}">
-            {{movie.Title}}
-        </div>
+            <img src={{movie.ImagePath}} />
 
-        <button mat-button [ngStyle]="{'color': '#42a5f5', 'margin-left': '0', 'padding-left': '0'}"
-            (click)="showDirector(movie.Director.Name, movie.Director.Bio, movie.Director.Birth)" color="primary">
-            {{movie.Director.Name}}
-        </button>
-        <div>
-            <button mat-flat-button [ngStyle]="{'background-color': '#9575cd', 'width': '100%'}"
-                (click)="showDetails(movie.Title, movie.Director.Name, movie.ImagePath, movie.Description)"
-                color="primary">
-                Details
+            <mat-card-title [ngStyle]="{'color': '#fff', 'opacity': '0.8', 'margin-top': '8px'}">
+                {{movie.Title}}
+            </mat-card-title>
+
+            <button mat-button [ngStyle]="{'color': '#42a5f5', 'margin-left': '0', 'padding-left': '0'}"
+                (click)="showDirector(movie.Director.Name, movie.Director.Bio, movie.Director.Birth)" color="primary">
+                {{movie.Director.Name}}
             </button>
-        </div>
 
-        <button mat-button [ngStyle]="{'color': '#fff176', 'margin-left': '0', 'padding-left': '0'}"
-            (click)="showGenre(movie.Genre.Name, movie.Genre.Description)" color="primary">
-            {{movie.Genre.Name}}
-        </button>
+        </mat-card-content>
+
+        <mat-card-actions>
+            <div>
+                <button mat-flat-button [ngStyle]="{'background-color': '#9575cd', 'width': '100%'}"
+                    (click)="showDetails(movie.Title, movie.Director.Name, movie.ImagePath, movie.Description)"
+                    color="primary">
+                    Details
+                </button>
+            </div>
+
+            <button mat-button [ngStyle]="{'color': '#42a5f5', 'margin-left': '0', 'padding-left': '0'}"
+                (click)="showGenre(movie.Genre.Name, movie.Genre.Description)" color="primary">
+                {{movie.Genre.Name}}
+            </button>
+
+            <mat-icon [ngStyle]="{'color': '#fff176'}" (click)="toggleFavorite(movie._id)">
+                favorite
+            </mat-icon>
+
+            <mat-icon [ngStyle]="{'color': '#fff176'}" (click)="toggleFavorite(movie._id)">
+                favorite_border
+            </mat-icon>
+        </mat-card-actions>
 
     </mat-card>
 </div>
