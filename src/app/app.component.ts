@@ -13,25 +13,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'myFlix-Angular-client';
 
-  // constructor(public dialog: MatDialog) { }
 
-  // openUserRegistrationDialog(): void {
-  //   this.dialog.open(UserRegistrationFormComponent, {
-  //     // Assigning the dialog a width
-  //     width: '280px'
-  //   });
-  // }
-
-  // openUserLoginDialog(): void {
-  //   this.dialog.open(UserLoginFormComponent, {
-  //     // Assigning the dialog a width
-  //     width: '280px'
-  //   });
-  // }
-
-  // openMoviesDialog(): void {
-  //   this.dialog.open(MovieCardComponent, {
-  //     width: '500px'
-  //   });
-  // }
 }

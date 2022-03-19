@@ -20,7 +20,7 @@ export class MovieCardComponent implements OnInit {
   // Where the movies returned from the API call will be kept
   username: any = localStorage.getItem('username');
   //user: any = JSON.parse(this.username);
-  currentUser: any = null;
+  //currentUser: any = null;
   movies: any[] = [];
   favoriteMovies: any[] = [];
 
@@ -38,14 +38,11 @@ export class MovieCardComponent implements OnInit {
   }
 
   getUser(): void {
-    //const userTest = localStorage.getItem('username');
     this.fetchApiData.getProfile().subscribe((resp: any) => {
-      this.currentUser = resp;
-      console.log('Setting current user to')
-      console.log(this.currentUser)
-      // this.favoriteMovies = resp.FavoriteMovies;
-      // console.log('Setting favorite movies to ')
-      // console.log(this.favoriteMovies)
+      // this.currentUser = resp;
+      // console.log('Setting current user to')
+      // console.log(this.currentUser)
+
     });
   }
 

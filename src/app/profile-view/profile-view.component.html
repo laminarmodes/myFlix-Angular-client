@@ -1,2 +1,43 @@
 <app-navbar></app-navbar>
-<p>profile-view works!</p>
+<div style="display: flex;" [ngStyle]="{'margin-top': '60px'}">
+    <mat-card *ngFor="let favoriteMoviesObject of favoriteMoviesObjects;" style="flex: 1 1 auto;">
+
+        <mat-card-content>
+
+            <img src={{favoriteMoviesObject.ImagePath}} />
+
+            <mat-card-title [ngStyle]="{'color': '#fff', 'opacity': '0.8', 'margin-top': '8px'}">
+                {{favoriteMoviesObject.Title}}
+            </mat-card-title>
+
+            <button mat-button [ngStyle]="{'color': '#42a5f5', 'margin-left': '0', 'padding-left': '0'}"
+                (click)="showDirector(favoriteMoviesObject.Director.Name, favoriteMoviesObject.Director.Bio, favoriteMoviesObject.Director.Birth)"
+                color="primary">
+                {{favoriteMoviesObject.Director.Name}}
+            </button>
+
+        </mat-card-content>
+
+        <mat-card-actions>
+            <div>
+                <button mat-flat-button [ngStyle]="{'background-color': '#9575cd', 'width': '100%'}"
+                    (click)="showDetails(favoriteMoviesObject.Title, favoriteMoviesObject.Director.Name, favoriteMoviesObject.ImagePath, favoriteMoviesObject.Description)"
+                    color="primary">
+                    Details
+                </button>
+            </div>
+
+            <button mat-button [ngStyle]="{'color': '#42a5f5', 'margin-left': '0', 'padding-left': '0'}"
+                (click)="showGenre(favoriteMoviesObject.Genre.Name, favoriteMoviesObject.Genre.Description)"
+                color="primary">
+                {{favoriteMoviesObject.Genre.Name}}
+            </button>
+
+            <mat-icon [ngStyle]="{'color': '#fff176'}" (click)="removeFromFavorites(favoriteMoviesObject._id)">
+                favorite
+            </mat-icon>
+
+        </mat-card-actions>
+
+    </mat-card>
+</div>
