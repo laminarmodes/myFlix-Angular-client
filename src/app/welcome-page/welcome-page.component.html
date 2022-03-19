@@ -1,14 +1,28 @@
 <div class="main-page">
-    <h1>
+    <h1 [ngStyle]="{'color': '#fff', 'opacity': '0.8', 'margin-bottom': '3rem'}">
         Welcome to myFlix!
     </h1>
-    <button Mat-raised-button (click)="openUserRegistrationDialog()" style="margin-right: 10px;" color="primary">
-        Sign Up
-    </button>
-    <button mat-raised-button color="primary" (click)="openUserLoginDialog()">
-        Login
-    </button>
-    <!-- <button mat-raised-button color="primary" (click)="openMoviesDialog()">
-        All Movies
-    </button> -->
+
+    <div>
+        <h3 [ngStyle]="{'color': '#fff', 'opacity': '0.8', 'margin-top': '3rem'}">
+            Login without registering (recommended)
+        </h3>
+        <button mat-raised-button color="primary" (click)="openUserLoginDialog()" style="margin-bottom: 10px;"
+            [ngStyle]="{'background-color': '#9575cd', 'width': '150px'}">
+            Login
+        </button>
+        <p [ngStyle]="{'color': '#fff', 'opacity': '0.8'}">Username: testuser123</p>
+        <p [ngStyle]="{'color': '#fff', 'opacity': '0.8'}">Password: testpassword123</p>
+    </div>
+
+    <div [ngStyle]="{'margin-top': '3rem'}">
+        <h2 [ngStyle]="{'color': '#fff', 'opacity': '0.8', 'margin-top': '3rem'}">
+            Optionally
+        </h2>
+        <button Mat-raised-button (click)="openUserRegistrationDialog()" style="margin-right: 10px;" color="primary">
+            Sign Up
+        </button>
+        <p [ngStyle]="{'color': '#fff', 'opacity': '0.8', 'margin-top': '0.5rem'}">(not required)</p>
+    </div>
+
 </div>

@@ -1,21 +1,22 @@
 <mat-card>
     <mat-card-header>
-        <mat-card-title>Login</mat-card-title>
+        <mat-card-title [ngStyle]="{'color': '#fff', 'opacity': '0.8'}">Login</mat-card-title>
     </mat-card-header>
     <mat-card-content>
         <form>
             <mat-form-field>
-                <input matInput [(ngModel)]="userData.Username" placeholder="Username" type="text" name="Username"
-                    required>
+                <input [ngStyle]="{'color': '#fff', 'opacity': '0.8'}" matInput [(ngModel)]="userData.Username"
+                    placeholder="Username" type="text" name="Username" required>
             </mat-form-field>
             <mat-form-field>
-                <input matInput [(ngModel)]="userData.Password" placeholder="Password" type="password" name="Password"
-                    required>
+                <input [ngStyle]="{'color': '#fff', 'opacity': '0.8'}" matInput [(ngModel)]="userData.Password"
+                    placeholder="Password" type="password" name="Password" required>
             </mat-form-field>
         </form>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-raised-button (click)="loginUser()" color="primary">
+        <button mat-raised-button (click)="loginUser()" color="primary"
+            [ngStyle]="{'background-color': '#9575cd', 'width': '150px'}">
             Login
         </button>
     </mat-card-actions>

@@ -1,0 +1,23 @@
+<mat-toolbar class="mat-elevation-z10" color="primary" fxLayout="row">
+
+    <div
+        [ngStyle]="{'display': 'flex', 'flex-direction': 'row', 'justify-content': 'flex-end', 'align-items': 'stretch',  'align-content': 'stretch' }">
+        <mat-list-item><a [routerLink]="['/movies']">Movies</a></mat-list-item>
+        <mat-list-item><a [routerLink]="['/profile']">Profile</a></mat-list-item>
+        <mat-list-item><a [routerLink]="['/logout']" (click)="logOut()">Logout</a></mat-list-item>
+    </div>
+
+
+    <div>
+        <a class="valign-center" mat-icon-button [matMenuTriggerFor]="menu" aria-label="additional links">
+            <mat-icon>more_vert</mat-icon>
+        </a>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item [routerLink]="['/movies']">Movies</button>
+            <button mat-menu-item [routerLink]=" ['/profile']">Profile</button>
+            <button mat-menu-item [routerLink]="['/logout']" (click)="logOut()">Logout</button>
+        </mat-menu>
+    </div>
+
+</mat-toolbar>
+<router-outlet></router-outlet>
