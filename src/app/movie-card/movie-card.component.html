@@ -15,21 +15,24 @@
                 {{movie.Title}}
             </mat-card-title>
 
-            <button mat-button [ngStyle]="{'color': '#42a5f5', 'margin-left': '0', 'padding-left': '0'}"
-                (click)="showDirector(movie.Director.Name, movie.Director.Bio, movie.Director.Birth)" color="primary">
-                {{movie.Director.Name}}
-            </button>
+
 
         </mat-card-content>
 
         <mat-card-actions>
-            <div>
-                <button mat-flat-button [ngStyle]="{'background-color': '#9575cd', 'width': '100%', 'color': '#1f262a'}"
-                    (click)="showDetails(movie.Title, movie.Director.Name, movie.ImagePath, movie.Description)"
-                    color="primary">
-                    Details
-                </button>
-            </div>
+
+            <button mat-button
+                [ngStyle]="{'color': '#42a5f5', 'margin-left': '0', 'padding-left': '0', 'margin-bottom': '0.5rem'}"
+                (click)="showDirector(movie.Director.Name, movie.Director.Bio, movie.Director.Birth)" color="primary">
+                {{movie.Director.Name}}
+            </button>
+
+            <button mat-flat-button [ngStyle]="{'background-color': '#9575cd', 'width': '100%', 'color': '#1f262a'}"
+                (click)="showDetails(movie.Title, movie.Director.Name, movie.ImagePath, movie.Description)"
+                color="primary">
+                Details
+            </button>
+
 
             <button mat-button [ngStyle]="{'color': '#42a5f5', 'margin-left': '0', 'padding-left': '0'}"
                 (click)="showGenre(movie.Genre.Name, movie.Genre.Description)" color="primary">

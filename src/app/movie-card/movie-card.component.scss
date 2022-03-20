@@ -3,6 +3,9 @@
     margin-left: 0.5rem;
     margin-right: 0.5rem;
     max-width: 186px;
+
+    display:flex;
+  flex-direction: column;
   }
 
   .mat-card-content {
@@ -10,14 +13,17 @@
       margin-left: 0;
       text-align: left;
       color: #fff;
+
+      flex-grow: 1;
+  overflow: auto;
   }
 
   .mat-card-actions {
     color: #000;
-    align-items:flex-end;
-    justify-content: left;
+    align-items:flex-start;
+    justify-content: flex-end;
     align-content: space-between;
-    justify-items: left;
+    //justify-items: flex-end;
     text-align: left;
     margin-left: 0px;
     margin-right: 0px;
@@ -35,6 +41,8 @@
 
   .mat-card-header {
     padding-left: 0;
+
+    flex-shrink: 0;
   }
 
   .mat-card-title {

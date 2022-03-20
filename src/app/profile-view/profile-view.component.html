@@ -19,22 +19,25 @@
                 {{favoriteMoviesObject.Title}}
             </mat-card-title>
 
-            <button mat-button [ngStyle]="{'color': '#42a5f5', 'margin-left': '0', 'padding-left': '0'}"
+
+
+        </mat-card-content>
+
+        <mat-card-actions>
+
+            <button mat-button
+                [ngStyle]="{'color': '#42a5f5', 'margin-left': '0', 'padding-left': '0', 'margin-bottom': '0.5rem'}"
                 (click)="showDirector(favoriteMoviesObject.Director.Name, favoriteMoviesObject.Director.Bio, favoriteMoviesObject.Director.Birth)"
                 color="primary">
                 {{favoriteMoviesObject.Director.Name}}
             </button>
 
-        </mat-card-content>
+            <button mat-flat-button [ngStyle]="{'background-color': '#9575cd', 'width': '100%'}"
+                (click)="showDetails(favoriteMoviesObject.Title, favoriteMoviesObject.Director.Name, favoriteMoviesObject.ImagePath, favoriteMoviesObject.Description)"
+                color="primary">
+                Details
+            </button>
 
-        <mat-card-actions>
-            <div>
-                <button mat-flat-button [ngStyle]="{'background-color': '#9575cd', 'width': '100%'}"
-                    (click)="showDetails(favoriteMoviesObject.Title, favoriteMoviesObject.Director.Name, favoriteMoviesObject.ImagePath, favoriteMoviesObject.Description)"
-                    color="primary">
-                    Details
-                </button>
-            </div>
 
             <button mat-button [ngStyle]="{'color': '#42a5f5', 'margin-left': '0', 'padding-left': '0'}"
                 (click)="showGenre(favoriteMoviesObject.Genre.Name, favoriteMoviesObject.Genre.Description)"

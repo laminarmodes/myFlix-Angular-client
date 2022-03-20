@@ -3,6 +3,8 @@
     margin-left: 0.5rem;
     margin-right: 0.5rem;
     max-width: 186px;
+    display:flex;
+    flex-direction: column;
   }
 
   .mat-card-content {
@@ -10,6 +12,8 @@
       margin-left: 0;
       text-align: left;
       color: #fff;
+      flex-grow: 1;
+    overflow: auto;
   }
 
   .mat-card-actions {
@@ -35,6 +39,7 @@
 
   .mat-card-header {
     padding-left: 0;
+    flex-shrink: 0;
   }
 
   .mat-card-title {
