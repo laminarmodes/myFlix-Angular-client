@@ -21,6 +21,7 @@ export class ProfileViewComponent implements OnInit {
   favoriteMovies: any[] = [];
   movies: any[] = [];
   favoriteMoviesObjects: any[] = [];
+  birthday: any = null;
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -38,6 +39,8 @@ export class ProfileViewComponent implements OnInit {
   getUser(): void {
     this.fetchApiData.getProfile().subscribe((resp: any) => {
       this.currentUser = resp;
+      let longBirthday = new Date(this.currentUser.Birthday);
+      this.birthday = longBirthday.toDateString();
       console.log('Setting current user to ');
       console.log(this.currentUser);
     });

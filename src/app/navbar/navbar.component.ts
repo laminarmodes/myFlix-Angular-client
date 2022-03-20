@@ -8,11 +8,27 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
+  public innerWidth: any;
+
+
+
   constructor(
     public router: Router
   ) { }
 
   ngOnInit(): void {
+    this.innerWidth = window.innerWidth;
+  }
+
+  collapseNavbar(): Boolean {
+    let screenSize = this.innerWidth;
+    console.log("Checking screen size")
+    console.log(screenSize);
+    if (screenSize < 500) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   goToMovies(): void {

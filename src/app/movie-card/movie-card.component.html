@@ -1,8 +1,12 @@
 <!-- *ngFor directive is being used to display all retunred movies, where each movie is displayed in its own card -->
 <app-navbar></app-navbar>
-<div style="display: flex;" [ngStyle]="{'margin-top': '60px'}">
-    <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto;">
-
+<h1
+    [ngStyle]="{'color': '#fff', 'opacity': '0.8', 'margin-bottom': '0.5rem', 'margin-left': '2rem', 'margin-top': '2rem'}">
+    Explore films and mark your favorites!
+</h1>
+<div style="display: flex;" [ngStyle]="{'margin-top': '2rem'}">
+    <!-- <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto;"> -->
+    <mat-card *ngFor="let movie of movies; let i=index">
         <mat-card-content>
 
             <img src={{movie.ImagePath}} />
@@ -20,7 +24,7 @@
 
         <mat-card-actions>
             <div>
-                <button mat-flat-button [ngStyle]="{'background-color': '#9575cd', 'width': '100%'}"
+                <button mat-flat-button [ngStyle]="{'background-color': '#9575cd', 'width': '100%', 'color': '#1f262a'}"
                     (click)="showDetails(movie.Title, movie.Director.Name, movie.ImagePath, movie.Description)"
                     color="primary">
                     Details

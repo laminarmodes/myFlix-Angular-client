@@ -55,16 +55,16 @@
     Your Profile Information
 </h2>
 
-<mat-card [ngStyle]="{'margin-left': '2rem'}">
+<mat-card [ngStyle]="{'margin-left': '2rem', 'padding-top':'2rem', 'max-width': '300px'}">
     <mat-card-title [ngStyle]="{'color': '#fff', 'opacity': '0.8'}">
-        {{currentUser.Username}}
+        Username: {{currentUser.Username}}
     </mat-card-title>
     <mat-card-subtitle [ngStyle]="{'color': '#fff', 'opacity': '0.8'}">
-        {{currentUser.Email}}
+        Email: {{currentUser.Email}}
     </mat-card-subtitle>
     <mat-card-content>
         <div>
-            {{currentUser.Birthday}}
+            Birthday: {{birthday}}
         </div>
     </mat-card-content>
     <mat-card-actions>

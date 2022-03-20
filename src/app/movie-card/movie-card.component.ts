@@ -40,9 +40,6 @@ export class MovieCardComponent implements OnInit {
   getUser(): void {
     this.fetchApiData.getProfile().subscribe((resp: any) => {
       // this.currentUser = resp;
-      // console.log('Setting current user to')
-      // console.log(this.currentUser)
-
     });
   }
 
@@ -50,17 +47,16 @@ export class MovieCardComponent implements OnInit {
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
-      console.log('Setting all movies to ' + this.movies);
-      console.log(this.movies);
-      //return this.movies;
+      // console.log('Setting all movies to ' + this.movies);
+      // console.log(this.movies);
     })
   }
 
   getFavorites(): void {
     this.fetchApiData.getFavorites(this.username).subscribe((resp: any) => {
       this.favoriteMovies = resp.FavoriteMovies;
-      console.log('Setting favorite movies to ')
-      console.log(this.favoriteMovies)
+      // console.log('Setting favorite movies to ')
+      // console.log(this.favoriteMovies)
     });
   }
 
