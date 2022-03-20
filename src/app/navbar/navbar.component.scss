@@ -20,8 +20,10 @@
   }
   
   mat-toolbar {
-    position: sticky;
-    position: -webkit-sticky;
+    // position: sticky;
+    // position: -webkit-sticky;
+    width:100%;
+   position: fixed;
     top: 0px;
     z-index: 999;
   }
