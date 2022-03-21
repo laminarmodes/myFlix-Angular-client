@@ -1,5 +1,10 @@
 <app-navbar></app-navbar>
-
+<div>
+    <h1
+        [ngStyle]="{'color': '#fff', 'opacity': '0.8', 'margin-bottom': '0.5rem', 'margin-left': '2rem', 'margin-top': '2rem'}">
+        Margin
+    </h1>
+</div>
 <h1 [ngStyle]="{'color': '#fff', 'opacity': '0.8', 'margin-bottom': '0.5rem'}">
     Hi {{currentUser.Username}}!
 </h1>
@@ -52,6 +57,13 @@
         </mat-card-actions>
 
     </mat-card>
+
+    <div
+        [ngStyle]="{'margin': '0 auto', 'align-content': 'center', 'align-items': 'center', 'justify-content': 'center', 'justify-items': 'center'}">
+        <mat-progress-spinner *ngIf="loading" [color]="color" [mode]="mode" [ngStyle]="{'z-index': '999'}">
+        </mat-progress-spinner>
+    </div>
+
 </div>
 
 <h2 [ngStyle]="{'color': '#fff', 'opacity': '0.8'}">

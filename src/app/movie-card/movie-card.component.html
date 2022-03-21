@@ -1,9 +1,16 @@
 <!-- *ngFor directive is being used to display all retunred movies, where each movie is displayed in its own card -->
 <app-navbar></app-navbar>
-<h1
-    [ngStyle]="{'color': '#fff', 'opacity': '0.8', 'margin-bottom': '0.5rem', 'margin-left': '2rem', 'margin-top': '2rem'}">
-    Explore films and mark your favorites!
-</h1>
+<div>
+    <h1 [ngStyle]="{'color': '#fff', 'opacity': '0.8', 'margin-bottom': '0.5rem', 'margin-left': '2rem'}">
+        Margin
+    </h1>
+</div>
+<div [ngStyle]="{'margin-top': '4rem'}">
+    <h1
+        [ngStyle]="{'color': '#fff', 'opacity': '0.8', 'margin-bottom': '0.5rem', 'margin-left': '2rem', 'margin-top': '2rem'}">
+        Explore films and mark your favorites!
+    </h1>
+</div>
 <div style="display: flex;" [ngStyle]="{'margin-top': '2rem'}">
     <!-- <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto;"> -->
     <mat-card *ngFor="let movie of movies; let i=index">
@@ -51,4 +58,11 @@
         </mat-card-actions>
 
     </mat-card>
+
+    <div
+        [ngStyle]="{'margin': '0 auto', 'align-content': 'center', 'align-items': 'center', 'justify-content': 'center', 'justify-items': 'center'}">
+        <mat-progress-spinner *ngIf="loading" [color]="color" [mode]="mode" [ngStyle]="{'z-index': '999'}">
+        </mat-progress-spinner>
+    </div>
+
 </div>

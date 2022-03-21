@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DetailsCardComponent } from '../details-card/details-card.component';
 import { FetchApiDataService } from '../fetch-api-data.service';
 
 import { MatDialog } from '@angular/material/dialog';
 import { DirectorCardComponent } from '../director-card/director-card.component';
 import { GenreCardComponent } from '../genre-card/genre-card.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 // This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -17,12 +18,20 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 export class MovieCardComponent implements OnInit {
 
+  @Input() spinner = {
+
+  };
+
   // Where the movies returned from the API call will be kept
   username: any = localStorage.getItem('username');
   //user: any = JSON.parse(this.username);
   //currentUser: any = null;
   movies: any[] = [];
   favoriteMovies: any[] = [];
+  loading: any = false;
+  color: any = 'primary';
+  mode: any = 'indeterminate';
+
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -45,10 +54,12 @@ export class MovieCardComponent implements OnInit {
 
   // Will fetch the movies from the FetchApiDataService using getAllMovies()
   getMovies(): void {
+    this.loading = true;
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
       // console.log('Setting all movies to ' + this.movies);
       // console.log(this.movies);
+      this.loading = false;
     })
   }
 

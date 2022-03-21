@@ -22,6 +22,9 @@ export class ProfileViewComponent implements OnInit {
   movies: any[] = [];
   favoriteMoviesObjects: any[] = [];
   birthday: any = null;
+  loading: any = false;
+  color: any = 'primary';
+  mode: any = 'indeterminate';
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -58,10 +61,12 @@ export class ProfileViewComponent implements OnInit {
   }
 
   getFavorites(): void {
+    this.loading = false;
     this.fetchApiData.getFavorites(this.username).subscribe((resp: any) => {
       this.favoriteMovies = resp.FavoriteMovies;
-      console.log('Setting favorite movies to ')
-      console.log(this.favoriteMovies)
+      console.log('Setting favorite movies to ');
+      console.log(this.favoriteMovies);
+      this.loading = true;
     });
   }
 
