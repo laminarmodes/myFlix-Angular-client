@@ -1,9 +1,12 @@
+/** 
+ * Renders the profile page
+ * @module ProfileViewComponent
+ */
 import { Component, OnInit } from '@angular/core';
 import { DetailsCardComponent } from '../details-card/details-card.component';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
-
 import { DirectorCardComponent } from '../director-card/director-card.component';
 import { GenreCardComponent } from '../genre-card/genre-card.component';
 import { EditProfileComponent } from '../edit-profile/edit-profile.component';
@@ -13,10 +16,10 @@ import { EditProfileComponent } from '../edit-profile/edit-profile.component';
   templateUrl: './profile-view.component.html',
   styleUrls: ['./profile-view.component.scss']
 })
+
 export class ProfileViewComponent implements OnInit {
 
   username: any = localStorage.getItem('username');
-  //user: any = JSON.parse(this.username);
   currentUser: any = null;
   favoriteMovies: any[] = [];
   movies: any[] = [];
@@ -36,54 +39,56 @@ export class ProfileViewComponent implements OnInit {
     this.getUser();
     this.getMovies();
     this.getFavorites();
-    //this.getFavoriteMoviesObjects();
   }
 
+  /** Get's the user profile information and extracts and formats 
+   * the birthday in advance
+   */
   getUser(): void {
     this.fetchApiData.getProfile().subscribe((resp: any) => {
       this.currentUser = resp;
       let longBirthday = new Date(this.currentUser.Birthday);
       this.birthday = longBirthday.toDateString();
-      console.log('Setting current user to ');
-      console.log(this.currentUser);
     });
   }
 
-  // Will fetch the movies from the FetchApiDataService using getAllMovies()
+  /** Will fetch the movies from the FetchApiDataService using 
+   * getAllMovies() Once we have the movies, we can extract the 
+   * favorites */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
-      console.log('Setting all movies to ');
-      console.log(this.movies);
-      // Once we have the movies, we can extract the favorites
       this.getFavoriteMoviesObjects();
     })
   }
 
+  /** Get's the IDs user's favorite movies */
   getFavorites(): void {
     this.loading = false;
     this.fetchApiData.getFavorites(this.username).subscribe((resp: any) => {
       this.favoriteMovies = resp.FavoriteMovies;
-      console.log('Setting favorite movies to ');
-      console.log(this.favoriteMovies);
       this.loading = true;
     });
   }
 
+  /** Uses the favorite movie ID's to extract the favorite movies from the
+   * movies
+   */
   getFavoriteMoviesObjects(): void {
     console.log("getting objects")
     this.currentUser.FavoriteMovies.map((favoriteMovie: any) => {
       if (!this.favoriteMovieObjectAlreadyLoaded(favoriteMovie)) {
-        console.log('Checking favorites while in user profile');
         let confirmedFavorite = this.movies.find((m: any) => m._id === favoriteMovie)
-        console.log(confirmedFavorite)
         this.favoriteMoviesObjects.push(confirmedFavorite)
       }
     });
   }
 
+  /** Checks to see if the favorite movie is already loaded
+   * @param movieID string representing the movie ID
+   * @returns true if the movie has already been loaded
+   */
   favoriteMovieObjectAlreadyLoaded(movieID: string): Boolean {
-    // Check if movie is in favorites
     let favoriteMatch = this.favoriteMoviesObjects.filter(function (e: any) {
       return e._id === movieID;
     })
@@ -96,19 +101,25 @@ export class ProfileViewComponent implements OnInit {
     }
   }
 
+  /** Removies the movie from the user's favorites list
+   * @param movieID string representing the movie ID
+   */
   removeFromFavorites(movieID: string): void {
     this.fetchApiData.deleteFromFavorites(movieID).subscribe((resp: any) => {
-      // Notify user of success
       this.snackBar.open('Removed from favorites', 'OK', {
         duration: 2000
       });
       this.ngOnInit();
     });
-    // Update user data in client
-    this.ngOnInit();
+    this.ngOnInit(); // Update user data in client
   }
 
-
+  /** Opens a dialogue and displays details about the movie
+   * @param title is the movie title string
+   * @param director is the movie director string
+   * @param imagePath is the path to the image for the movie
+   * @param description is the description of the movie
+   */
   showDetails(title: string, director: string, imagePath: any, description: string): void {
     this.dialog.open(DetailsCardComponent, {
       data: {
@@ -121,6 +132,11 @@ export class ProfileViewComponent implements OnInit {
     });
   }
 
+  /** Opens a dialogue and displays information about the director
+   * @param name string for the director's name
+   * @param bio string for the director's biography
+   * @param birth string indicating the director's date of birth
+   */
   showDirector(name: string, bio: string, birth: string): void {
     this.dialog.open(DirectorCardComponent, {
       data: {
@@ -131,6 +147,11 @@ export class ProfileViewComponent implements OnInit {
     });
   }
 
+  /** Opens a dialogue and displays a description about 
+   * the genre
+   * @param name string name of the genre
+   * @param description string of the genre description
+   */
   showGenre(name: string, description: string): void {
     this.dialog.open(GenreCardComponent, {
       data: {
@@ -140,6 +161,7 @@ export class ProfileViewComponent implements OnInit {
     });
   }
 
+  /** Deletes the user's account */
   deleteUser(): void {
     this.fetchApiData.deleteUser().subscribe(() => {
       this.snackBar.open('Your account has been removed', 'Ok', {
@@ -149,11 +171,11 @@ export class ProfileViewComponent implements OnInit {
     });
   }
 
+  /** Opens a dialog for the user to edit their profile information */
   showEditDialog(): void {
     this.dialog.open(EditProfileComponent, {
-      // Assigning the dialog a width
       width: '280px'
     });
   }
 
-}
+} //: export class ProfileViewComponent implements OnInit

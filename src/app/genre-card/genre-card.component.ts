@@ -1,3 +1,7 @@
+/** 
+ * Renders the details about a particular genre
+ * @module GenreCardComponent
+ */
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -6,6 +10,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './genre-card.component.html',
   styleUrls: ['./genre-card.component.scss']
 })
+
 export class GenreCardComponent implements OnInit {
 
   constructor(
@@ -19,4 +24,4 @@ export class GenreCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-}
+} //: export class GenreCardComponent implements OnInit

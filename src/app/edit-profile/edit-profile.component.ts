@@ -1,12 +1,11 @@
-// src/app/user-login-form/user-login-form.component.ts
+/** 
+ * Renders the dialog to edit profile information
+ * @module EditProfileComponent
+ */
 import { Component, OnInit, Input } from '@angular/core';
-// You'll use this import to close the dialog on success
 import { MatDialogRef } from '@angular/material/dialog';
-// This import brings in the API calls we created in 6.2
 import { FetchApiDataService } from '../fetch-api-data.service';
-// This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
-
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,8 +15,6 @@ import { Router } from '@angular/router';
 })
 
 export class EditProfileComponent implements OnInit {
-
-  // user: any = {};
 
   @Input() userProfile = {
     Username: '',
@@ -36,24 +33,13 @@ export class EditProfileComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // getUser(): void {
-  //   const user = localStorage.getItem('username');
-  //   this.fetchApiData.getProfile().subscribe((resp: any) => {
-  //     this.user = resp;
-  //   });
-  // }
-
+  /** Updates the user's profile information with the user input */
   editUser(): void {
     this.fetchApiData.editUser(this.userProfile).subscribe((resp: any) => {
-
       this.dialogRef.close();
       window.location.reload();
-
-      // Update user in local client
-      //localStorage.setItem('username', this.userProfile.Username)
       localStorage.setItem('token', resp.token);
       localStorage.setItem('username', resp.user.Username);
-
       this.snackBar.open('Your profile has been updated', 'Ok', {
         duration: 4000,
       });
@@ -65,4 +51,4 @@ export class EditProfileComponent implements OnInit {
     });
   }
 
-}
+} //: export class EditProfileComponent implements OnInit

@@ -1,3 +1,7 @@
+/** 
+ * Renders the details about a particular movie
+ * @module DetailsCardComponent
+ */
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
@@ -7,6 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './details-card.component.html',
   styleUrls: ['./details-card.component.scss']
 })
+
 export class DetailsCardComponent implements OnInit {
 
   constructor(
@@ -23,4 +28,4 @@ export class DetailsCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-}
+} //: export class DetailsCardComponent implements OnInit

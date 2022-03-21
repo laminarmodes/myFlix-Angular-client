@@ -1,5 +1,8 @@
 # MyFlixAngularClient
 
+This client allows users to regster, login and view movies from the myFlix API.  Users can view details about the movie, as well 
+as information about the genre and director.  Users may also add or remove movies to and from their favorites list.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.6.
 
 ## Development server

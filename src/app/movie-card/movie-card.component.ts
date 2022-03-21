@@ -1,13 +1,13 @@
+/** 
+ * Renders the collection of movies retreived from the API
+ * @module MovieCardComponent
+ */
 import { Component, Input, OnInit } from '@angular/core';
 import { DetailsCardComponent } from '../details-card/details-card.component';
 import { FetchApiDataService } from '../fetch-api-data.service';
-
 import { MatDialog } from '@angular/material/dialog';
 import { DirectorCardComponent } from '../director-card/director-card.component';
 import { GenreCardComponent } from '../genre-card/genre-card.component';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
-// This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -18,20 +18,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 export class MovieCardComponent implements OnInit {
 
-  @Input() spinner = {
-
-  };
-
-  // Where the movies returned from the API call will be kept
   username: any = localStorage.getItem('username');
-  //user: any = JSON.parse(this.username);
-  //currentUser: any = null;
   movies: any[] = [];
   favoriteMovies: any[] = [];
   loading: any = false;
   color: any = 'primary';
   mode: any = 'indeterminate';
-
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -39,38 +31,40 @@ export class MovieCardComponent implements OnInit {
     public snackBar: MatSnackBar,
   ) { }
 
-  // This is called when Angular is done creating the component
   ngOnInit(): void {
     this.getUser();
     this.getMovies();
     this.getFavorites();
   }
 
+  /** Gets user profile information */
   getUser(): void {
     this.fetchApiData.getProfile().subscribe((resp: any) => {
-      // this.currentUser = resp;
     });
   }
 
-  // Will fetch the movies from the FetchApiDataService using getAllMovies()
+  /** Will fetch the movies from the FetchApiDataService using getAllMovies() */
   getMovies(): void {
     this.loading = true;
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
-      // console.log('Setting all movies to ' + this.movies);
-      // console.log(this.movies);
       this.loading = false;
     })
   }
 
+  /** Gets favorite movies */
   getFavorites(): void {
     this.fetchApiData.getFavorites(this.username).subscribe((resp: any) => {
       this.favoriteMovies = resp.FavoriteMovies;
-      // console.log('Setting favorite movies to ')
-      // console.log(this.favoriteMovies)
     });
   }
 
+  /** Opens a dialogue and displays details about the movie
+   * @param title is the movie title string
+   * @param director is the movie director string
+   * @param imagePath is the path to the image for the movie
+   * @param description is the description of the movie
+   */
   showDetails(title: string, director: string, imagePath: any, description: string): void {
     this.dialog.open(DetailsCardComponent, {
       data: {
@@ -83,6 +77,11 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /** Opens a dialogue and displays information about the director
+   * @param name string for the director's name
+   * @param bio string for the director's biography
+   * @param birth string indicating the director's date of birth
+   */
   showDirector(name: string, bio: string, birth: string): void {
     this.dialog.open(DirectorCardComponent, {
       data: {
@@ -93,6 +92,11 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /** Opens a dialogue and displays a description about 
+   * the genre
+   * @param name string name of the genre
+   * @param description string of the genre description
+   */
   showGenre(name: string, description: string): void {
     this.dialog.open(GenreCardComponent, {
       data: {
@@ -102,13 +106,15 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /** Checks to see if movie is contained in facorites
+   * @param movieID string
+   * @returns true of the movie is in favorites
+   */
   isFavorite(movieID: string): Boolean {
-    // Check if movie is in favorites
     let favoriteMatch = this.favoriteMovies.filter(function (e: any) {
       return e === movieID;
     })
     let favoriteExists = favoriteMatch.length;
-
     if (favoriteExists > 0) {
       return true;
     } else {
@@ -116,42 +122,40 @@ export class MovieCardComponent implements OnInit {
     }
   }
 
+  /** Changes the state of a movie from 'favorite' to 'not favorite' or 'not favorite
+   * to favorite
+   * @param movieID string representing the movie ID
+   */
   toggleFavorite(movieID: string): void {
     if (this.isFavorite(movieID)) {
-      // Remove from favorites
       this.removeFromFavorites(movieID);
     } else {
-      // Add to favorites
       this.addToFavorites(movieID);
     }
   }
 
+  /** Adds the movie to the user's favorite's list
+   * @param movieID string represengint the movie ID
+   */
   addToFavorites(movieID: string): void {
-    // Check if movie is in favorites
-    let favoriteMatch = this.favoriteMovies.filter(function (e: any) {
-      return e === movieID;
-    })
-    let favoriteExists = favoriteMatch.length;
-
     this.fetchApiData.addFavorite(movieID).subscribe((resp: any) => {
-      // Notify user of success
       this.snackBar.open('Added to favorites', 'OK', {
         duration: 2000
       });
     });
-    // Update user data in client
-    this.ngOnInit();
+    this.ngOnInit();  // Update user data in client
   }
 
+  /** Removes the movie from the user's favorite's list
+   * @param movieID string represengint the movie ID
+   */
   removeFromFavorites(movieID: string): void {
     this.fetchApiData.deleteFromFavorites(movieID).subscribe((resp: any) => {
-      // Notify user of success
       this.snackBar.open('Removed from favorites', 'OK', {
         duration: 2000
       });
     });
-    // Update user data in client
-    this.ngOnInit();
+    this.ngOnInit();    // Update user data in client
   }
 
-}
+} //: class MovieCardComponent implements OnInit

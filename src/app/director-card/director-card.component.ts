@@ -1,3 +1,7 @@
+/** 
+ * Renders the details about a particular director
+ * @module DirectorCardComponent
+ */
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -6,6 +10,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './director-card.component.html',
   styleUrls: ['./director-card.component.scss']
 })
+
 export class DirectorCardComponent implements OnInit {
 
   constructor(
@@ -20,4 +25,4 @@ export class DirectorCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-}
+} //: export class DirectorCardComponent implements OnInit
