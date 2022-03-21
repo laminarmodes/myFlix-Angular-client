@@ -102,7 +102,7 @@ export class ProfileViewComponent implements OnInit {
   }
 
   /** Removies the movie from the user's favorites list
-   * @param movieID string representing the movie ID
+   * @param movieID the movie ID
    */
   removeFromFavorites(movieID: string): void {
     this.fetchApiData.deleteFromFavorites(movieID).subscribe((resp: any) => {
@@ -133,9 +133,9 @@ export class ProfileViewComponent implements OnInit {
   }
 
   /** Opens a dialogue and displays information about the director
-   * @param name string for the director's name
-   * @param bio string for the director's biography
-   * @param birth string indicating the director's date of birth
+   * @param name the director's name
+   * @param bio the director's biography
+   * @param birth the director's date of birth
    */
   showDirector(name: string, bio: string, birth: string): void {
     this.dialog.open(DirectorCardComponent, {
@@ -149,8 +149,8 @@ export class ProfileViewComponent implements OnInit {
 
   /** Opens a dialogue and displays a description about 
    * the genre
-   * @param name string name of the genre
-   * @param description string of the genre description
+   * @param name name of the genre
+   * @param description the genre description
    */
   showGenre(name: string, description: string): void {
     this.dialog.open(GenreCardComponent, {

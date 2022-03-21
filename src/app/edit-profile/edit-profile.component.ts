@@ -1,6 +1,7 @@
 /** 
  * Renders the dialog to edit profile information
  * @module EditProfileComponent
+ * 
  */
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';

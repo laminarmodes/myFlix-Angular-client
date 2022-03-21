@@ -78,9 +78,9 @@ export class MovieCardComponent implements OnInit {
   }
 
   /** Opens a dialogue and displays information about the director
-   * @param name string for the director's name
-   * @param bio string for the director's biography
-   * @param birth string indicating the director's date of birth
+   * @param name the director's name
+   * @param bio the director's biography
+   * @param birth the director's date of birth
    */
   showDirector(name: string, bio: string, birth: string): void {
     this.dialog.open(DirectorCardComponent, {
@@ -94,7 +94,7 @@ export class MovieCardComponent implements OnInit {
 
   /** Opens a dialogue and displays a description about 
    * the genre
-   * @param name string name of the genre
+   * @param name name of the genre
    * @param description string of the genre description
    */
   showGenre(name: string, description: string): void {
@@ -107,7 +107,7 @@ export class MovieCardComponent implements OnInit {
   }
 
   /** Checks to see if movie is contained in facorites
-   * @param movieID string
+   * @param movieID the movie ID
    * @returns true of the movie is in favorites
    */
   isFavorite(movieID: string): Boolean {
@@ -124,7 +124,7 @@ export class MovieCardComponent implements OnInit {
 
   /** Changes the state of a movie from 'favorite' to 'not favorite' or 'not favorite
    * to favorite
-   * @param movieID string representing the movie ID
+   * @param movieID the movie ID
    */
   toggleFavorite(movieID: string): void {
     if (this.isFavorite(movieID)) {
@@ -135,7 +135,7 @@ export class MovieCardComponent implements OnInit {
   }
 
   /** Adds the movie to the user's favorite's list
-   * @param movieID string represengint the movie ID
+   * @param movieID the movie ID
    */
   addToFavorites(movieID: string): void {
     this.fetchApiData.addFavorite(movieID).subscribe((resp: any) => {
@@ -147,7 +147,7 @@ export class MovieCardComponent implements OnInit {
   }
 
   /** Removes the movie from the user's favorite's list
-   * @param movieID string represengint the movie ID
+   * @param movieID the movie ID
    */
   removeFromFavorites(movieID: string): void {
     this.fetchApiData.deleteFromFavorites(movieID).subscribe((resp: any) => {
